@@ -3,7 +3,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistrationUC1{
+public class UserRegistration {
     static Scanner sc = new Scanner(System.in);
     public static void validateFirstName() {
         System.out.println("Enter First name ");
@@ -43,11 +43,25 @@ public class UserRegistrationUC1{
         }
     }
 
+    public static void validatePhoneNumber() {
+        System.out.println("Enter user mobile number: ");
+        String phoneNumber = sc.nextLine();
+        String phoneNumberPattern = "^[0-9]{2}[ ]+[6-9]{1}[0-9]{9}}";
+        Pattern pattern = Pattern.compile(phoneNumberPattern);
+        Matcher matcher = pattern.matcher(phoneNumber);
+        if (matcher.matches()) {
+            System.out.println("Entered Number is Valid");
+        } else {
+            System.out.println("Entered Number is Invalid");
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration Project ");
         validateFirstName();
         validateLastName();
         validateEmail();
+        validatePhoneNumber();
     }
 }
 
